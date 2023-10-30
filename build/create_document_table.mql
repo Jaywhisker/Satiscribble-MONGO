@@ -1,0 +1,104 @@
+use document_db;
+
+db.createCollection("minutes", {
+    validator: {
+        $jsonSchema: {
+            bsonType: "object",
+            required: ["agenda", "meetingDetails", "topics"],
+            properties: {
+                agenda: {
+                    bsonType: "array",
+                    items: {
+                        bsonType: "string"
+                    }
+                },
+                meetingDetails: {
+                    bsonType: "object",
+                    required: ["date", "location", "attendees"],
+                    properties: {
+                        date: {
+                            bsonType: "date"
+                        },
+                        location: {
+                            bsonType: "string"
+                        },
+                        attendees: {
+                            bsonType: "array",
+                            items: {
+                                bsonType: "string"
+                            }
+                        }
+                    }
+                },
+                topics: {
+                    bsonType: "array",
+                    items: {
+                        bsonType: "object",
+                        required: ["topicTitle", "topicID", "sentences"],
+                        properties: {
+                            topicTitle: {
+                                bsonType: "string",
+                            },
+                            topicID: {
+                                bsonType: "string",
+                            },
+                            sentences: {
+                                bsonType: "object",
+                                required: ["sentenceText", "sentenceID"],
+                                properties: {
+                                    sentenceText: {
+                                        bsonType: "string"
+                                    },
+                                    sentenceID: {
+                                        bsonType: "string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+});
+
+db.createCollection("chatHistory", {
+    validator: {
+        $jsonSchema: {
+            bsonType: "object",
+            required: ["document", "web"],
+            properties: {
+                document: {
+                    bsonType: "array",
+                    items: {
+                        bsonType: "object",
+                        required: ["user", "assistant"],
+                        properties: {
+                            "user": {
+                                bsonType: "string"
+                            },
+                            "assistant": {
+                                bsonType: "string"
+                            }
+                        }
+                    }
+                },
+                web: {
+                    bsonType: "array",
+                    items: {
+                        bsonType: "object",
+                        required: ["user", "assistant"],
+                        properties: {
+                            "user": {
+                                bsonType: "string"
+                            },
+                            "assistant": {
+                                bsonType: "string"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+});

@@ -1,0 +1,71 @@
+use document_db;
+
+db.minutes.insertOne({
+    agenda: ["create design system", "create web experiment"],
+    meetingDetails: {
+        date: ISODate('2023-10-30T00:00:00Z'),
+        location: 'studio',
+        attendees: ['hn', 'jx', 'yl', 'wx']
+    },
+    topics: [
+        {
+            topicID: '0',
+            topicTitle: 'topic 1',
+            sentences: [
+                {
+                    sentenceText: 'bulletpoint 1',
+                    sentenceID: '00'
+                },
+                {
+                    sentenceText: 'bulletpoint 2',
+                    sentenceID: '01'
+                }
+            ]
+        },
+        {
+            topicID: '1',
+            topicTitle: 'topic 2',
+            sentences: [
+                {
+                    sentenceText: 'bulletpoint 1',
+                    sentenceID: '10'
+                },
+                {
+                    sentenceText: 'bulletpoint 2',
+                    sentenceID: '11'
+                }
+            ]
+        }
+    ]
+});
+
+db.minutes.find({ "topics.topicID": '1' });
+db.minutes.find({}, { agenda: 1 });
+db.minutes.find({}, { meetingDetails: 1 });
+
+db.minutes.drop();
+
+db.chatHistory.insertOne({
+    document: [
+        {
+            user: "what is the topic of work?",
+            assistant: "The topic can be found in ..."
+        },
+        {
+            user: "what about this?",
+            assistant: "The topic is about ..."
+        }
+    ],
+    web: [
+        {
+            user: "what is 1+1",
+            assistant: "3"
+        }
+    ]
+});
+
+db.chatHistory.find({ "document.user": 'what is 1+1' });
+db.chatHistory.find({}, { web: 1 });
+db.chatHistory.find({}, { document: 1 });
+
+db.chatHistory.drop();
