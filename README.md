@@ -39,25 +39,20 @@ To confirm that your MongoDB has set up properly, you may run
 mongosh --username admin --authenticationDatabase admin --password password < satiscribble-db/test/test.mql
 ```
 
-# Querying information 
-After launching the docker program, login in with the user
+# Common querying functions
+To get all the data in your mongoDB, please follow the following commands:
+After launching the docker program, go to the terminal and login in with the user. Afterwhich, you need to select the correct database (document_db)
 ```
 mongosh --username admin --authenticationDatabase admin --password password
-```
-
-Then go to the correct document
-```
 use document_db
 ```
-
-Run away
-To get the minutes database
+Once done, you may query with the general format of
+```
+db.[collection name].find({})
+```
+For satiscribble specific use case, you may run either functions
 ```
 db.minutes.find({})
-```
-
-To get the chatHistory database
-```
 db.chatHistory.find({})
 ```
 
