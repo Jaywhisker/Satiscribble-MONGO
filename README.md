@@ -39,6 +39,29 @@ To confirm that your MongoDB has set up properly, you may run
 mongosh --username admin --authenticationDatabase admin --password password < satiscribble-db/test/test.mql
 ```
 
+# Querying information 
+After launching the docker program, login in with the user
+```
+mongosh --username admin --authenticationDatabase admin --password password
+```
+
+Then go to the correct document
+```
+use document_db
+```
+
+Run away
+To get the minutes database
+```
+db.minutes.find({})
+```
+
+To get the chatHistory database
+```
+db.chatHistory.find({})
+```
+
+
 # File structure
 ```
 ├── build                          <- folder containing all docker container related files
