@@ -1,4 +1,4 @@
-# Satiscribble-DB
+# Satiscribble-MONGO
 This is the repository for Satiscribble DB. This mongoDB has 2 collections:
 `minutes`: document store of all agenda, meeting details and minutes (segmented by topics)
 `chatHistory`: document store of all chat history, split by document and web QnA
