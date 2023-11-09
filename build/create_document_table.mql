@@ -4,7 +4,7 @@ db.createCollection("minutes", {
     validator: {
         $jsonSchema: {
             bsonType: "object",
-            required: ["agenda", "meetingDetails", "topics"],
+            required: ["agenda", "meetingDetails", "topics", "glossary"],
             properties: {
                 agenda: {
                     bsonType: "array",
@@ -56,6 +56,18 @@ db.createCollection("minutes", {
                             }
                         }
                     }
+                },
+                glossary: {
+                    bsonType: "array",
+                    required: ["abbreviation", "meaning"],
+                    properties: {
+                        abbreviation: {
+                            bsonType: "string"
+                        },
+                        meaning: {
+                            bsonType: "string"
+                        }
+                    }
                 }
             }
         }
@@ -72,13 +84,16 @@ db.createCollection("chatHistory", {
                     bsonType: "array",
                     items: {
                         bsonType: "object",
-                        required: ["user", "assistant"],
+                        required: ["user", "assistant", "sourcetopicIDs"],
                         properties: {
                             "user": {
                                 bsonType: "string"
                             },
                             "assistant": {
                                 bsonType: "string"
+                            }, 
+                            "sourcetopicIDs": {
+                                bsonType: "array"
                             }
                         }
                     }
