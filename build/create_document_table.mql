@@ -1,6 +1,7 @@
 use document_db;
 
 db.createCollection("minutes", {
+db.runCommand( { collMod: "minutes",
     validator: {
         $jsonSchema: {
             bsonType: "object",
@@ -43,7 +44,7 @@ db.createCollection("minutes", {
                                 bsonType: "string",
                             },
                             sentences: {
-                                bsonType: "object",
+                                bsonType: "array",
                                 required: ["sentenceText", "sentenceID"],
                                 properties: {
                                     sentenceText: {
