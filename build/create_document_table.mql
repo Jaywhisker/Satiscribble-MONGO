@@ -1,7 +1,6 @@
 use document_db;
 
 db.createCollection("minutes", {
-db.runCommand( { collMod: "minutes",
     validator: {
         $jsonSchema: {
             bsonType: "object",
