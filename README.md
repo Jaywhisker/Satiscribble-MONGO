@@ -38,6 +38,7 @@ To confirm that your MongoDB has set up properly, you may run
 ```
 mongosh --username admin --authenticationDatabase admin --password password < satiscribble-db/test/test.mql
 ```
+Confirm that there are no errors as this ensures that your schema is working
 
 # Common querying functions
 To get all the data in your mongoDB, please follow the following commands:
