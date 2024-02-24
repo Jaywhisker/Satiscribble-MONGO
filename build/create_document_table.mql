@@ -44,13 +44,16 @@ db.createCollection("minutes", {
                             },
                             sentences: {
                                 bsonType: "array",
-                                required: ["sentenceText", "sentenceID"],
-                                properties: {
-                                    sentenceText: {
-                                        bsonType: "string"
-                                    },
-                                    sentenceID: {
-                                        bsonType: "string"
+                                items: {
+                                    bsonType: "object",
+                                    required: ["sentenceText", "sentenceID"],
+                                    properties: {
+                                        sentenceText: {
+                                            bsonType: "string"
+                                        },
+                                        sentenceID: {
+                                            bsonType: "string"
+                                        }
                                     }
                                 }
                             }
