@@ -1,6 +1,6 @@
 # Satiscribble-MONGO
-This is the repository for Satiscribble DB. This mongoDB has 2 collections:
-`minutes`: document store of all agenda, meeting details and minutes (segmented by topics)
+This is the repository for Satiscribble DB. This mongoDB has 2 collections: <br/>
+`minutes`: document store of all agenda, meeting details and minutes (segmented by topics) <br/>
 `chatHistory`: document store of all chat history, split by document and web QnA
 
 # Setup
@@ -38,6 +38,7 @@ To confirm that your MongoDB has set up properly, you may run
 ```
 mongosh --username admin --authenticationDatabase admin --password password < satiscribble-db/test/test.mql
 ```
+Confirm that there are no errors as this ensures that your schema is working
 
 # Common querying functions
 To get all the data in your mongoDB, please follow the following commands:
