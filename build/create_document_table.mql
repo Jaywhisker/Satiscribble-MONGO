@@ -1,5 +1,6 @@
 use document_db;
 
+// Create the "minutes" collection with schema validation
 db.createCollection("minutes", {
     validator: {
         $jsonSchema: {
@@ -37,10 +38,10 @@ db.createCollection("minutes", {
                         required: ["topicTitle", "topicID", "sentences"],
                         properties: {
                             topicTitle: {
-                                bsonType: "string",
+                                bsonType: "string"
                             },
                             topicID: {
-                                bsonType: "string",
+                                bsonType: "string"
                             },
                             sentences: {
                                 bsonType: "array",
@@ -62,13 +63,16 @@ db.createCollection("minutes", {
                 },
                 glossary: {
                     bsonType: "array",
-                    required: ["abbreviation", "meaning"],
-                    properties: {
-                        abbreviation: {
-                            bsonType: "string"
-                        },
-                        meaning: {
-                            bsonType: "string"
+                    items: {
+                        bsonType: "object",
+                        required: ["abbreviation", "meaning"],
+                        properties: {
+                            abbreviation: {
+                                bsonType: "string"
+                            },
+                            meaning: {
+                                bsonType: "string"
+                            }
                         }
                     }
                 }
@@ -77,6 +81,7 @@ db.createCollection("minutes", {
     }
 });
 
+// Create the "chatHistory" collection with schema validation
 db.createCollection("chatHistory", {
     validator: {
         $jsonSchema: {
@@ -89,14 +94,17 @@ db.createCollection("chatHistory", {
                         bsonType: "object",
                         required: ["user", "assistant", "sourcetopicIDs"],
                         properties: {
-                            "user": {
+                            user: {
                                 bsonType: "string"
                             },
-                            "assistant": {
+                            assistant: {
                                 bsonType: "string"
-                            }, 
-                            "sourcetopicIDs": {
-                                bsonType: "array"
+                            },
+                            sourcetopicIDs: {
+                                bsonType: "array",
+                                items: {
+                                    bsonType: "string"
+                                }
                             }
                         }
                     }
@@ -107,10 +115,10 @@ db.createCollection("chatHistory", {
                         bsonType: "object",
                         required: ["user", "assistant"],
                         properties: {
-                            "user": {
+                            user: {
                                 bsonType: "string"
                             },
-                            "assistant": {
+                            assistant: {
                                 bsonType: "string"
                             }
                         }

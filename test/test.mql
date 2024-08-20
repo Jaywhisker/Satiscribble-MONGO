@@ -1,5 +1,6 @@
 use document_db;
 
+// Insert a document into the "minutes" collection
 db.minutes.insertOne({
     agenda: ["create design system", "create web experiment"],
     meetingDetails: {
@@ -39,12 +40,19 @@ db.minutes.insertOne({
     ]
 });
 
+// Find documents in the "minutes" collection where topics.topicID is '1'
 db.minutes.find({ "topics.topicID": '1' });
+
+// Find documents in the "minutes" collection projecting only the "agenda" field
 db.minutes.find({}, { agenda: 1 });
+
+// Find documents in the "minutes" collection projecting only the "meetingDetails" field
 db.minutes.find({}, { meetingDetails: 1 });
 
+// Drop the "minutes" collection
 db.minutes.drop();
 
+// Insert a document into the "chatHistory" collection
 db.chatHistory.insertOne({
     document: [
         {
@@ -64,8 +72,14 @@ db.chatHistory.insertOne({
     ]
 });
 
+// Find documents in the "chatHistory" collection where document.user is 'what is 1+1'
 db.chatHistory.find({ "document.user": 'what is 1+1' });
+
+// Find documents in the "chatHistory" collection projecting only the "web" field
 db.chatHistory.find({}, { web: 1 });
+
+// Find documents in the "chatHistory" collection projecting only the "document" field
 db.chatHistory.find({}, { document: 1 });
 
+// Drop the "chatHistory" collection
 db.chatHistory.drop();
